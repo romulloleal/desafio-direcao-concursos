@@ -35,6 +35,7 @@ const Player = ({
   const [fullScreen, setFullScreen] = useState(false)
   const [openPlaybackRate, setOpenPlaybackRate] = useState(false)
   const [playbackRate, setPlaybackRate] = useState(1.0)
+  const [showControls, setShowControls] = useState(false)
 
   const player = useRef<HTMLVideoElement>(null)
   const playerContent = useRef<HTMLDivElement>(null)
@@ -109,8 +110,28 @@ const Player = ({
     if (player.current) player.current.playbackRate = value
   }
 
+  // hack to change controls visibility when user mouseMove on player and when mouseOut
+  useEffect(() => {
+    console.log('hidden')
+    const timeout = setTimeout(() => {
+      setShowControls(false)
+    }, 4000)
+    return () => {
+      clearInterval(timeout)
+    }
+  }, [showControls])
+
+  const changeControlsVisibility = () => {
+    setShowControls(true)
+  }
+
   return (
-    <PlayerContent ref={playerContent} theaterMode={theaterMode}>
+    <PlayerContent
+      ref={playerContent}
+      theaterMode={theaterMode}
+      onMouseMove={changeControlsVisibility}
+      onMouseOut={() => setShowControls(false)}
+    >
       <Video
         ref={player}
         src={videoUrl}
@@ -118,7 +139,7 @@ const Player = ({
         autoPlay
       />
 
-      <Controls className='controls' isPlaying={isPlaying}>
+      <Controls className='controls' showControls={showControls}>
         <TimeLine
           type='range'
           min={0}

@@ -17,12 +17,6 @@ export const PlayerContent = styled.div<{theaterMode: boolean}>`
 
   transition: all 0.2s ease-in-out;
 
-  &:hover {
-    .controls {
-      opacity: 1;
-    }
-  }
-
   @media (min-width: 450px) {
     min-height: 260px;
   }
@@ -48,7 +42,7 @@ export const Video = styled.video`
   transition: all 0.2s ease-in-out;
 `
 
-export const Controls = styled.div<{ isPlaying: boolean }>`
+export const Controls = styled.div<{ showControls: boolean }>`
   position: absolute;
   bottom: 0;
   width: 98%;
@@ -56,8 +50,9 @@ export const Controls = styled.div<{ isPlaying: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  opacity: ${({ isPlaying }) => (isPlaying ? 0 : 1)};
-  transition: all 0.4s ease-in-out;
+  visibility: ${({ showControls }) => (showControls ? 'visible' : 'hidden')};
+  opacity: ${({ showControls }) => (showControls ? 1 : 0)};
+  transition: all 0.2s ease-in-out;
 `
 
 export const Functions = styled.div`
