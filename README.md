@@ -1,12 +1,14 @@
-## Demo
+# Youtube Video Player
 
-[desafio-direcao-concursos.vercel.app](https://desafio-direcao-concursos.vercel.app)
+Is a challenge made for Direação Concursos to play videos like youtube.
 
-## Development server
+Demo: [desafio-direcao-concursos.vercel.app](https://desafio-direcao-concursos.vercel.app)
+
+## Run in development server
 
 ```bash
-npm run dev
-# or
+yarn install
+# then
 yarn dev
 ```
 
@@ -14,4 +16,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Technologies
 
-Next.js, typescript, styled-components
+* Next.js
+* Typescript
+* Styled Components
+---
+⌨️ with ❤️ by [Romullo Leal](https://github.com/romulloleal) 😊
